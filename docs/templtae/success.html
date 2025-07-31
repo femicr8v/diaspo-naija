@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Success - Global Nigerian Community</title>
+    <link rel="stylesheet" href="styling.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Space+Grotesk:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .success-section {
+        min-height: calc(100vh - 200px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: var(--spacing-4xl) 0;
+        background-color: var(--color-gray-50);
+      }
+
+      .success-content {
+        text-align: center;
+        max-width: 600px;
+        margin: 0 auto;
+        padding: var(--spacing-2xl);
+        background: var(--color-white);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-medium);
+      }
+
+      .success-icon {
+        font-size: 64px;
+        margin-bottom: var(--spacing-xl);
+      }
+
+      .countdown {
+        font-size: 24px;
+        color: var(--color-primary);
+        margin: var(--spacing-xl) 0;
+        font-weight: 700;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="container">
+        <a href="/" class="navbar-brand"> 🌍 GloNig </a>
+      </div>
+    </nav>
+
+    <!-- Success Section -->
+    <section class="success-section">
+      <div class="container">
+        <div class="success-content">
+          <div class="success-icon">🎉</div>
+          <h1>You've signed up successfully!</h1>
+          <p class="mt-2">
+            Now join our Discord community and begin connecting instantly.
+          </p>
+          <div class="countdown mt-3">
+            Redirecting in <span id="timer">5</span>s
+          </div>
+          <a
+            href="https://discord.com/invite/YOUR-LINK"
+            class="btn btn-primary mt-2"
+            >Go to Discord</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <script>
+      let timeLeft = 5;
+      const timerElement = document.getElementById("timer");
+
+      const countdown = setInterval(() => {
+        timeLeft--;
+        timerElement.textContent = timeLeft;
+
+        if (timeLeft <= 0) {
+          clearInterval(countdown);
+          window.location.href = "https://discord.com/invite/YOUR-LINK";
+        }
+      }, 1000);
+    </script>
+  </body>
+</html>
