@@ -1,7 +1,29 @@
-import { Button } from "@/components/ui/button";
+import { Navigation } from '@/components/navigation'
+import { Hero } from '@/components/hero'
+import { Features } from '@/components/features'
+import { HowItWorks } from '@/components/how-it-works'
+import { Audience } from '@/components/audience'
+import { MentorshipCTA } from '@/components/mentorship-cta'
+import { Testimonials } from '@/components/testimonials'
+import { FAQ } from '@/components/faq'
+import { Newsletter } from '@/components/newsletter'
+import { Footer } from '@/components/footer'
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20"></div>
-  );
+    <>
+      <Navigation />
+      <main>
+        <Hero />
+        <Features />
+        <HowItWorks />
+        <Audience />
+        <MentorshipCTA />
+        <Testimonials />
+        <FAQ />
+        <Newsletter />
+      </main>
+      <Footer />
+    </>
+  )
 }
