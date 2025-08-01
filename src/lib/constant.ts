@@ -171,7 +171,7 @@ export const newsletterContent = {
 
 // Footer Content
 export const footerContent = {
-  brandName: "🌍 GloNig",
+  brandName: "🌍 DiaspoNaija",
   brandTagline: "Connecting Nigerians Worldwide",
   copyright: "© 2024 Global Nigerian Community. All rights reserved.",
 };

@@ -29,7 +29,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${spaceGrotesk.className} ${roboto.variable} antialiased`}
+        className={`${spaceGrotesk.variable} ${roboto.variable} antialiased`}
       >
         {children}
         <Toaster />

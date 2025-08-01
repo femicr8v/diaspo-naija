@@ -34,10 +34,10 @@ export function Features() {
                   <div className="text-4xl mb-4 filter drop-shadow-sm">
                     {feature.icon}
                   </div>
-                  <h3 className="text-xl font-semibold text-foreground mb-4">
+                  <h3 className="text-xl font-semibold font-space-grotesk text-foreground mb-4">
                     {feature.title}
                   </h3>
-                  <p className="text-muted-foreground leading-relaxed">
+                  <p className="text-muted-foreground leading-relaxed font-roboto">
                     {feature.description}
                   </p>
                 </CardContent>

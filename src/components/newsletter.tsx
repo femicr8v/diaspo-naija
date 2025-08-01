@@ -37,7 +37,7 @@ export function Newsletter() {
           <h2 className="text-3xl font-bold font-space-grotesk mb-4 text-white">
             {newsletterContent.title}
           </h2>
-          <p className="text-lg mb-8 text-white/90">
+          <p className="text-lg mb-8 text-white/90 font-roboto">
             {newsletterContent.subtitle}
           </p>
 

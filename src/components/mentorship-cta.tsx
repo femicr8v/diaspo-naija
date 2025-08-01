@@ -29,7 +29,7 @@ export function MentorshipCTA() {
           <h2 className="text-3xl font-bold font-space-grotesk sm:text-4xl mb-4 text-white">
             {mentorshipCTA.title}
           </h2>
-          <p className="text-xl text-white/90 mb-10">
+          <p className="text-xl text-white/90 mb-10 font-roboto">
             {mentorshipCTA.subtitle}
           </p>
 

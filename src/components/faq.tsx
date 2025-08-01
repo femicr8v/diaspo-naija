@@ -39,10 +39,10 @@ export function FAQ() {
                 value={`item-${index}`}
                 className="border-primary/20"
               >
-                <AccordionTrigger className="text-left text-foreground hover:text-primary">
+                <AccordionTrigger className="text-left text-foreground hover:text-primary font-space-grotesk">
                   {faq.question}
                 </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground">
+                <AccordionContent className="text-muted-foreground font-roboto">
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>
