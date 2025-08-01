@@ -5,19 +5,20 @@ import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
-  weight: ["400", "600", "700"],
+  weight: ["400", "500", "600", "700"],
   variable: "--font-space-grotesk",
 });
 
 const roboto = Roboto({
   subsets: ["latin"],
-  weight: ["400", "500", "700"],
+  weight: ["400", "500", "600", "700"],
   variable: "--font-roboto",
 });
 
 export const metadata: Metadata = {
   title: "Global Nigerian Community - Connect Worldwide",
-  description: "A trusted hub bridging Diaspora and Nigeria through verified information, mentorship, and opportunity.",
+  description:
+    "A trusted hub bridging Diaspora and Nigeria through verified information, mentorship, and opportunity.",
 };
 
 export default function RootLayout({
@@ -28,7 +29,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${spaceGrotesk.variable} ${roboto.variable} font-sans antialiased`}
+        className={`${spaceGrotesk.className} ${roboto.variable} antialiased`}
       >
         {children}
         <Toaster />
@@ -36,3 +37,5 @@ export default function RootLayout({
     </html>
   );
 }
+
+// className={`${spaceGrotesk.variable} ${roboto.variable} font-sans antialiased`}

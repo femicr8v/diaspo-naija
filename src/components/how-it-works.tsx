@@ -1,51 +1,51 @@
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+"use client";
 
-const steps = [
-  {
-    number: 1,
-    title: 'Sign Up',
-    description: 'Create your account and complete your profile'
-  },
-  {
-    number: 2,
-    title: 'Join Discord',
-    description: 'Connect with the community in real-time'
-  },
-  {
-    number: 3,
-    title: 'Build Your Profile',
-    description: 'Coming soon - Showcase your expertise'
-  },
-  {
-    number: 4,
-    title: 'Connect and Grow',
-    description: 'Network, learn, and seize opportunities'
-  }
-]
+import { motion } from "framer-motion";
+import { Card, CardContent } from "@/components/ui/card";
+import { steps } from "@/lib/constant";
 
 export function HowItWorks() {
   return (
-    <section id="how-it-works" className="py-20 bg-primary/5">
+    <section id="how-it-works" className="py-20 bg-gray-50">
       <div className="container">
-        <h2 className="text-3xl font-bold font-space-grotesk text-center mb-12">
-          How It Works
-        </h2>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {steps.map((step) => (
-            <Card key={step.number} className="relative bg-card hover:shadow-lg transition-shadow">
-              <div className="absolute -top-4 -left-4 w-8 h-8 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-bold">
-                {step.number}
-              </div>
-              <CardHeader>
-                <CardTitle className="font-space-grotesk">{step.title}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">{step.description}</p>
-              </CardContent>
-            </Card>
+        <motion.div
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
+          <h2 className="text-3xl font-bold font-space-grotesk text-gray-900 sm:text-4xl">
+            How It Works
+          </h2>
+        </motion.div>
+
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+          {steps.map((step, index) => (
+            <motion.div
+              key={step.number}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              viewport={{ once: true }}
+            >
+              <Card className="h-full border-gray-200 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                <CardContent className="p-8 text-center">
+                  <div className="w-12 h-12 bg-red-600 text-white rounded-full flex items-center justify-center mx-auto mb-6 text-xl font-bold">
+                    {step.number}
+                  </div>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-4">
+                    {step.title}
+                  </h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    {step.description}
+                  </p>
+                </CardContent>
+              </Card>
+            </motion.div>
           ))}
         </div>
       </div>
     </section>
-  )
+  );
 }

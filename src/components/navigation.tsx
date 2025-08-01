@@ -1,52 +1,85 @@
-'use client'
+"use client";
 
-import Link from 'next/link'
-import { Button } from '@/components/ui/button'
+import Link from "next/link";
+import { useState } from "react";
+import { cn } from "@/lib/utils";
+import { Menu, X } from "lucide-react";
+import { navLinks, footerContent } from "@/lib/constant";
+import { Button, buttonVariants } from "@/components/ui/button";
 
 export function Navigation() {
+  const [mobileOpen, setMobileOpen] = useState(false);
+
   return (
-    <nav className="fixed top-0 w-full bg-white/80 backdrop-blur-sm border-b z-50">
-      <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-        <Link href="/" className="text-2xl font-space-grotesk font-bold flex items-center gap-2">
-          🌍 GloNig
-        </Link>
-        
-        <div className="hidden md:flex items-center gap-6">
-          <Link href="#how-it-works" className="text-sm font-medium hover:text-primary">
-            How It Works
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200">
+      <div className="container">
+        <div className="flex items-center justify-between h-16">
+          <Link href="/" className="text-2xl font-bold font-space-grotesk">
+            {footerContent.brandName}
           </Link>
-          <Link href="#mentorship" className="text-sm font-medium hover:text-primary">
-            Mentorship
-          </Link>
-          <Link href="#testimonials" className="text-sm font-medium hover:text-primary">
-            Testimonials
-          </Link>
-          <Button asChild>
-            <Link href="/signup">
+
+          {/* Desktop Nav */}
+          <div className="hidden md:flex items-center gap-8">
+            {navLinks.map((navlink) => (
+              <Link
+                key={navlink.href}
+                href={navlink.href}
+                className="text-sm font-medium text-gray-600 hover:text-red-600 transition-colors"
+              >
+                {navlink.label}
+              </Link>
+            ))}
+            <Link
+              href="/auth/signup"
+              className={cn(
+                buttonVariants({ variant: "default", size: "default" }),
+                "bg-red-600 hover:bg-red-700"
+              )}
+            >
               Join Now
             </Link>
+          </div>
+
+          {/* Mobile Hamburger */}
+          <Button
+            variant="ghost"
+            size="sm"
+            className="md:hidden"
+            onClick={() => setMobileOpen((prev) => !prev)}
+            aria-label={mobileOpen ? "Close menu" : "Open menu"}
+          >
+            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
           </Button>
         </div>
 
-        <Button variant="ghost" size="icon" className="md:hidden">
-          <span className="sr-only">Open menu</span>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <line x1="4" x2="20" y1="12" y2="12" />
-            <line x1="4" x2="20" y1="6" y2="6" />
-            <line x1="4" x2="20" y1="18" y2="18" />
-          </svg>
-        </Button>
+        {/* Mobile Menu */}
+        {mobileOpen && (
+          <div className="md:hidden absolute top-16 left-0 right-0 bg-white border-b border-gray-200 shadow-lg">
+            <div className="container py-4 space-y-4">
+              {navLinks.map((navlink) => (
+                <Link
+                  key={navlink.href}
+                  href={navlink.href}
+                  className="block text-base font-medium text-gray-600 hover:text-red-600 transition-colors"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  {navlink.label}
+                </Link>
+              ))}
+              <Link
+                href="/auth/signup"
+                className={cn(
+                  buttonVariants({ variant: "default", size: "default" }),
+                  "bg-red-600 hover:bg-red-700 w-full"
+                )}
+                onClick={() => setMobileOpen(false)}
+              >
+                Join Now
+              </Link>
+            </div>
+          </div>
+        )}
       </div>
     </nav>
-  )
+  );
 }

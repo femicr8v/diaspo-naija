@@ -1,51 +1,51 @@
-import { Card, CardContent } from '@/components/ui/card'
-import { Avatar, AvatarFallback } from '@/components/ui/avatar'
+"use client";
 
-const testimonials = [
-  {
-    text: "This platform has been invaluable in helping me navigate my tech career transition to Canada.",
-    author: "Sarah O.",
-    location: "Toronto",
-    initials: "SO"
-  },
-  {
-    text: "I found my mentor here and now I'm successfully running my startup in Lagos.",
-    author: "Michael A.",
-    location: "Lagos",
-    initials: "MA"
-  }
-]
+import { motion } from "framer-motion";
+import { Card, CardContent } from "@/components/ui/card";
+import { testimonials } from "@/lib/constant";
 
 export function Testimonials() {
   return (
-    <section id="testimonials" className="py-20 bg-background">
+    <section id="testimonials" className="py-20 bg-gray-50">
       <div className="container">
-        <h2 className="text-3xl font-bold font-space-grotesk text-center mb-12">
-          What Our Community Says
-        </h2>
-        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <motion.div
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
+          <h2 className="text-3xl font-bold font-space-grotesk text-gray-900 sm:text-4xl">
+            What Our Community Says
+          </h2>
+        </motion.div>
+
+        <div className="grid gap-8 md:grid-cols-2 max-w-4xl mx-auto">
           {testimonials.map((testimonial, index) => (
-            <Card key={index} className="bg-card hover:shadow-lg transition-shadow">
-              <CardContent className="pt-6">
-                <div className="flex flex-col items-center text-center">
-                  <Avatar className="h-16 w-16 mb-4">
-                    <AvatarFallback className="bg-primary/10 text-primary">
-                      {testimonial.initials}
-                    </AvatarFallback>
-                  </Avatar>
-                  <blockquote className="text-lg mb-4">
+            <motion.div
+              key={testimonial.author}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.2 }}
+              viewport={{ once: true }}
+            >
+              <Card className="h-full border-gray-200 hover:shadow-lg transition-all duration-300">
+                <CardContent className="p-8 text-center">
+                  <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <span className="text-2xl">{testimonial.avatar}</span>
+                  </div>
+                  <p className="text-gray-600 italic mb-6 text-lg leading-relaxed">
                     "{testimonial.text}"
-                  </blockquote>
-                  <p className="font-medium">
-                    {testimonial.author}
-                    <span className="text-muted-foreground"> • {testimonial.location}</span>
                   </p>
-                </div>
-              </CardContent>
-            </Card>
+                  <p className="font-semibold text-gray-900">
+                    - {testimonial.author}
+                  </p>
+                </CardContent>
+              </Card>
+            </motion.div>
           ))}
         </div>
       </div>
     </section>
-  )
+  );
 }
