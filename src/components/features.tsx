@@ -6,7 +6,7 @@ import { features } from "@/lib/constant";
 
 export function Features() {
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 bg-gradient-to-b from-background to-muted/30">
       <div className="container">
         <motion.div
           className="text-center mb-16"
@@ -15,7 +15,7 @@ export function Features() {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl font-bold font-space-grotesk text-gray-900 sm:text-4xl">
+          <h2 className="text-3xl font-bold font-space-grotesk nigerian-text-gradient sm:text-4xl">
             Why Choose Our Platform
           </h2>
         </motion.div>
@@ -29,13 +29,15 @@ export function Features() {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
             >
-              <Card className="h-full border-gray-200 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+              <Card className="h-full nigerian-card-bg border-primary/20 hover:shadow-xl hover:shadow-primary/10 transition-all duration-300 hover:-translate-y-1 hover:border-primary/40">
                 <CardContent className="p-8 text-center">
-                  <div className="text-4xl mb-4">{feature.icon}</div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-4">
+                  <div className="text-4xl mb-4 filter drop-shadow-sm">
+                    {feature.icon}
+                  </div>
+                  <h3 className="text-xl font-semibold text-foreground mb-4">
                     {feature.title}
                   </h3>
-                  <p className="text-gray-600 leading-relaxed">
+                  <p className="text-muted-foreground leading-relaxed">
                     {feature.description}
                   </p>
                 </CardContent>

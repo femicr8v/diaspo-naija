@@ -6,7 +6,10 @@ import { testimonials } from "@/lib/constant";
 
 export function Testimonials() {
   return (
-    <section id="testimonials" className="py-20 bg-gray-50">
+    <section
+      id="testimonials"
+      className="py-20 bg-gradient-to-b from-muted/30 to-background"
+    >
       <div className="container">
         <motion.div
           className="text-center mb-16"
@@ -15,7 +18,7 @@ export function Testimonials() {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl font-bold font-space-grotesk text-gray-900 sm:text-4xl">
+          <h2 className="text-3xl font-bold font-space-grotesk nigerian-text-gradient sm:text-4xl">
             What Our Community Says
           </h2>
         </motion.div>
@@ -29,15 +32,17 @@ export function Testimonials() {
               transition={{ duration: 0.6, delay: index * 0.2 }}
               viewport={{ once: true }}
             >
-              <Card className="h-full border-gray-200 hover:shadow-lg transition-all duration-300">
+              <Card className="h-full nigerian-card-bg border-primary/20 hover:shadow-xl hover:shadow-primary/10 transition-all duration-300 hover:-translate-y-1 hover:border-primary/40">
                 <CardContent className="p-8 text-center">
-                  <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <span className="text-2xl">{testimonial.avatar}</span>
+                  <div className="w-16 h-16 bg-gradient-to-br from-primary to-primary/80 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
+                    <span className="text-2xl text-white">
+                      {testimonial.avatar}
+                    </span>
                   </div>
-                  <p className="text-gray-600 italic mb-6 text-lg leading-relaxed">
+                  <p className="text-muted-foreground italic mb-6 text-lg leading-relaxed">
                     "{testimonial.text}"
                   </p>
-                  <p className="font-semibold text-gray-900">
+                  <p className="font-semibold text-foreground">
                     - {testimonial.author}
                   </p>
                 </CardContent>

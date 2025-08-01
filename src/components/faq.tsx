@@ -11,7 +11,7 @@ import { faqs } from "@/lib/constant";
 
 export function FAQ() {
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 bg-background">
       <div className="container">
         <motion.div
           className="text-center mb-16"
@@ -20,7 +20,7 @@ export function FAQ() {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl font-bold font-space-grotesk text-gray-900 sm:text-4xl">
+          <h2 className="text-3xl font-bold font-space-grotesk nigerian-text-gradient sm:text-4xl">
             Frequently Asked Questions
           </h2>
         </motion.div>
@@ -37,12 +37,12 @@ export function FAQ() {
               <AccordionItem
                 key={index}
                 value={`item-${index}`}
-                className="border-gray-200"
+                className="border-primary/20"
               >
-                <AccordionTrigger className="text-left text-gray-900 hover:text-red-600">
+                <AccordionTrigger className="text-left text-foreground hover:text-primary">
                   {faq.question}
                 </AccordionTrigger>
-                <AccordionContent className="text-gray-600">
+                <AccordionContent className="text-muted-foreground">
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>

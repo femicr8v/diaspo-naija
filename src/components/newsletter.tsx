@@ -18,8 +18,15 @@ export function Newsletter() {
   };
 
   return (
-    <section className="py-20 bg-red-600 text-white">
-      <div className="container">
+    <section className="py-20 bg-gradient-to-r from-primary to-primary/80 text-primary-foreground relative overflow-hidden">
+      {/* Decorative elements */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute top-5 right-5 w-20 h-20 rounded-full bg-white/20 blur-lg"></div>
+        <div className="absolute bottom-5 left-5 w-16 h-16 rounded-full bg-white/15 blur-md"></div>
+        <div className="absolute top-1/2 right-1/3 w-12 h-12 rounded-full bg-white/10 blur-sm"></div>
+      </div>
+
+      <div className="container relative">
         <motion.div
           className="max-w-2xl mx-auto text-center"
           initial={{ opacity: 0, y: 20 }}
@@ -27,10 +34,10 @@ export function Newsletter() {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl font-bold font-space-grotesk mb-4">
+          <h2 className="text-3xl font-bold font-space-grotesk mb-4 text-white">
             {newsletterContent.title}
           </h2>
-          <p className="text-lg mb-8 text-red-100">
+          <p className="text-lg mb-8 text-white/90">
             {newsletterContent.subtitle}
           </p>
 
@@ -47,12 +54,12 @@ export function Newsletter() {
               placeholder={newsletterContent.placeholder}
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="bg-white text-gray-900 border-0 focus:ring-2 focus:ring-red-300"
+              className="bg-white/95 text-foreground border-0 focus:ring-2 focus:ring-white/50 placeholder:text-muted-foreground"
               required
             />
             <Button
               type="submit"
-              className="bg-gray-900 text-white hover:bg-gray-800 border-0"
+              className="bg-white text-primary hover:bg-white/90 border-0 font-semibold"
             >
               {newsletterContent.buttonText}
             </Button>

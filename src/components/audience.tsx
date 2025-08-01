@@ -7,7 +7,7 @@ import { audienceBlocks } from "@/lib/constant";
 
 export function Audience() {
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 bg-gradient-to-b from-background to-muted/30">
       <div className="container">
         <div className="grid gap-8 md:grid-cols-2">
           {audienceBlocks.map((block, index) => (
@@ -18,9 +18,9 @@ export function Audience() {
               transition={{ duration: 0.6, delay: index * 0.2 }}
               viewport={{ once: true }}
             >
-              <Card className="h-full border-gray-200 hover:shadow-lg transition-all duration-300">
+              <Card className="h-full nigerian-card-bg border-primary/20 hover:shadow-xl hover:shadow-primary/10 transition-all duration-300 hover:border-primary/40">
                 <CardHeader>
-                  <CardTitle className="font-space-grotesk text-xl text-gray-900">
+                  <CardTitle className="font-space-grotesk text-xl text-foreground">
                     {block.title}
                   </CardTitle>
                 </CardHeader>
@@ -29,7 +29,7 @@ export function Audience() {
                     {block.benefits.map((benefit, benefitIndex) => (
                       <motion.li
                         key={benefitIndex}
-                        className="flex items-center gap-3 text-gray-600"
+                        className="flex items-center gap-3 text-muted-foreground"
                         initial={{ opacity: 0, x: -10 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{
@@ -38,7 +38,7 @@ export function Audience() {
                         }}
                         viewport={{ once: true }}
                       >
-                        <Check className="w-5 h-5 text-red-600 flex-shrink-0" />
+                        <Check className="w-5 h-5 text-primary flex-shrink-0" />
                         {benefit}
                       </motion.li>
                     ))}

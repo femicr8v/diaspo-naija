@@ -6,7 +6,7 @@ import { steps } from "@/lib/constant";
 
 export function HowItWorks() {
   return (
-    <section id="how-it-works" className="py-20 bg-gray-50">
+    <section id="how-it-works" className="py-20 bg-background">
       <div className="container">
         <motion.div
           className="text-center mb-16"
@@ -15,7 +15,7 @@ export function HowItWorks() {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl font-bold font-space-grotesk text-gray-900 sm:text-4xl">
+          <h2 className="text-3xl font-bold font-space-grotesk nigerian-text-gradient sm:text-4xl">
             How It Works
           </h2>
         </motion.div>
@@ -29,15 +29,15 @@ export function HowItWorks() {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
             >
-              <Card className="h-full border-gray-200 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+              <Card className="h-full nigerian-card-bg border-primary/20 hover:shadow-xl hover:shadow-primary/10 transition-all duration-300 hover:-translate-y-1 hover:border-primary/40">
                 <CardContent className="p-8 text-center">
-                  <div className="w-12 h-12 bg-red-600 text-white rounded-full flex items-center justify-center mx-auto mb-6 text-xl font-bold">
+                  <div className="w-12 h-12 bg-primary text-primary-foreground rounded-full flex items-center justify-center mx-auto mb-6 text-xl font-bold">
                     {step.number}
                   </div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-4">
+                  <h3 className="text-xl font-semibold text-foreground mb-4">
                     {step.title}
                   </h3>
-                  <p className="text-gray-600 leading-relaxed">
+                  <p className="text-muted-foreground leading-relaxed">
                     {step.description}
                   </p>
                 </CardContent>

@@ -11,10 +11,13 @@ export function Navigation() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-primary/20">
       <div className="container">
         <div className="flex items-center justify-between h-16">
-          <Link href="/" className="text-2xl font-bold font-space-grotesk">
+          <Link
+            href="/"
+            className="text-2xl font-bold font-space-grotesk nigerian-text-gradient"
+          >
             {footerContent.brandName}
           </Link>
 
@@ -24,7 +27,7 @@ export function Navigation() {
               <Link
                 key={navlink.href}
                 href={navlink.href}
-                className="text-sm font-medium text-gray-600 hover:text-red-600 transition-colors"
+                className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
               >
                 {navlink.label}
               </Link>
@@ -33,7 +36,7 @@ export function Navigation() {
               href="/auth/signup"
               className={cn(
                 buttonVariants({ variant: "default", size: "default" }),
-                "bg-red-600 hover:bg-red-700"
+                "bg-primary hover:bg-primary/90 text-primary-foreground"
               )}
             >
               Join Now
@@ -44,7 +47,7 @@ export function Navigation() {
           <Button
             variant="ghost"
             size="sm"
-            className="md:hidden"
+            className="md:hidden text-primary"
             onClick={() => setMobileOpen((prev) => !prev)}
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
           >
@@ -54,13 +57,13 @@ export function Navigation() {
 
         {/* Mobile Menu */}
         {mobileOpen && (
-          <div className="md:hidden absolute top-16 left-0 right-0 bg-white border-b border-gray-200 shadow-lg">
+          <div className="md:hidden absolute top-16 left-0 right-0 nigerian-card-bg border-b border-primary/20 shadow-lg">
             <div className="container py-4 space-y-4">
               {navLinks.map((navlink) => (
                 <Link
                   key={navlink.href}
                   href={navlink.href}
-                  className="block text-base font-medium text-gray-600 hover:text-red-600 transition-colors"
+                  className="block text-base font-medium text-muted-foreground hover:text-primary transition-colors"
                   onClick={() => setMobileOpen(false)}
                 >
                   {navlink.label}
@@ -70,7 +73,7 @@ export function Navigation() {
                 href="/auth/signup"
                 className={cn(
                   buttonVariants({ variant: "default", size: "default" }),
-                  "bg-red-600 hover:bg-red-700 w-full"
+                  "bg-primary hover:bg-primary/90 text-primary-foreground w-full"
                 )}
                 onClick={() => setMobileOpen(false)}
               >

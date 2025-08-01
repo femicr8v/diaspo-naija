@@ -7,10 +7,10 @@ import { heroContent } from "@/lib/constant";
 
 export function Hero() {
   return (
-    <section className="relative min-h-[90vh] flex items-center justify-center bg-gradient-to-b from-red-50 to-background pt-16">
-      <div className="absolute inset-0 grid grid-cols-2 -space-x-52 opacity-40">
-        <div className="blur-[106px] h-56 bg-gradient-to-br from-red-500 to-orange-400"></div>
-        <div className="blur-[106px] h-32 bg-gradient-to-r from-red-400 to-orange-300"></div>
+    <section className="relative min-h-[90vh] flex items-center justify-center nigerian-hero-bg pt-16">
+      <div className="absolute inset-0 grid grid-cols-2 -space-x-52 opacity-20">
+        <div className="blur-[106px] h-56 bg-gradient-to-br from-primary/40 to-primary/20"></div>
+        <div className="blur-[106px] h-32 bg-gradient-to-r from-primary/30 to-primary/10"></div>
       </div>
       <div className="container relative">
         <motion.div
@@ -20,7 +20,7 @@ export function Hero() {
           transition={{ duration: 0.8 }}
         >
           <motion.h1
-            className="text-4xl font-bold font-space-grotesk sm:text-6xl text-gray-900"
+            className="text-4xl font-bold font-space-grotesk sm:text-6xl nigerian-text-gradient"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -28,7 +28,7 @@ export function Hero() {
             {heroContent.title}
           </motion.h1>
           <motion.p
-            className="mt-6 text-lg text-gray-600"
+            className="mt-6 text-lg text-muted-foreground"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
@@ -41,7 +41,11 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            <Button asChild size="lg" className="bg-red-600 hover:bg-red-700">
+            <Button
+              asChild
+              size="lg"
+              className="bg-primary hover:bg-primary/90 text-primary-foreground"
+            >
               <Link href={heroContent.primaryCTAHref}>
                 {heroContent.primaryCTA}
               </Link>
@@ -50,7 +54,7 @@ export function Hero() {
               variant="outline"
               size="lg"
               asChild
-              className="border-red-600 text-red-600 hover:bg-red-600 hover:text-white"
+              className="border-primary text-primary hover:bg-primary hover:text-primary-foreground"
             >
               <Link href={heroContent.secondaryCTAHref}>
                 {heroContent.secondaryCTA}
