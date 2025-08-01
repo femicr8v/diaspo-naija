@@ -1,10 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
-import { navLinks, footerContent } from "@/lib/constant";
+import { navLinks } from "@/lib/constant";
+import { useState, useEffect } from "react";
 import { Button, buttonVariants } from "@/components/ui/button";
 
 export function Navigation() {
@@ -35,21 +35,25 @@ export function Navigation() {
           <Link
             href="/"
             className={cn(
-              "text-2xl font-bold font-space-grotesk transition-colors duration-300",
-              scrolled ? "nigerian-text-gradient" : "text-white"
+              "text-2xl font-bold font-space-grotesk transition-colors duration-300"
             )}
           >
-            {footerContent.brandName}
+            🌍{" "}
+            <span
+              className={cn(scrolled ? "nigerian-text-gradient" : "text-white")}
+            >
+              DiaspoNaija
+            </span>
           </Link>
 
           {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden lg:flex items-center gap-8">
             {navLinks.map((navlink) => (
               <Link
                 key={navlink.href}
                 href={navlink.href}
                 className={cn(
-                  "text-sm font-medium font-roboto transition-colors",
+                  "text-base font-medium font-roboto transition-colors",
                   scrolled
                     ? "text-muted-foreground hover:text-primary"
                     : "text-white/90 hover:text-white"
@@ -64,7 +68,8 @@ export function Navigation() {
                 buttonVariants({ variant: "default", size: "default" }),
                 scrolled
                   ? "bg-primary hover:bg-primary/90 text-primary-foreground"
-                  : "bg-white text-black hover:bg-white/90"
+                  : "bg-white text-black hover:text-white",
+                "px-6"
               )}
             >
               Join Now
@@ -74,9 +79,9 @@ export function Navigation() {
           {/* Mobile Hamburger */}
           <Button
             variant="ghost"
-            size="sm"
+            size="icon"
             className={cn(
-              "md:hidden",
+              "lg:hidden",
               scrolled ? "text-primary" : "text-white"
             )}
             onClick={() => setMobileOpen((prev) => !prev)}
@@ -88,7 +93,7 @@ export function Navigation() {
 
         {/* Mobile Menu */}
         {mobileOpen && (
-          <div className="md:hidden absolute top-16 left-0 right-0 bg-background/95 backdrop-blur-sm border-b border-primary/20 shadow-lg">
+          <div className="lg:hidden absolute top-16 left-0 right-0 bg-background/95 backdrop-blur-sm border-b border-primary/20 shadow-lg">
             <div className="container py-4 space-y-4">
               {navLinks.map((navlink) => (
                 <Link

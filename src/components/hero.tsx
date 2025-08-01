@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 
 export function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gray-900">
+    <section className="relative min-h-screen flex items-end overflow-hidden bg-gray-900">
       {/* Background Image with Overlay */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-gray-900"
@@ -18,9 +18,9 @@ export function Hero() {
       </div>
 
       {/* Content */}
-      <div className="container relative z-10">
+      <div className="container relative z-10 pb-20">
         <motion.div
-          className="max-w-4xl mx-auto text-left text-white"
+          className="max-w-4xl text-left text-white"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
