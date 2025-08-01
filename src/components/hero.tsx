@@ -2,11 +2,12 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 export function Hero() {
   return (
-    <section className="relative min-h-screen flex items-end overflow-hidden bg-gray-900">
+    <section className="relative min-h-screen flex items-center lg:items-end overflow-hidden bg-gray-900">
       {/* Background Image with Overlay */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-gray-900"
@@ -18,7 +19,7 @@ export function Hero() {
       </div>
 
       {/* Content */}
-      <div className="container relative z-10 pb-20">
+      <div className="container relative z-10 lg:pb-20">
         <motion.div
           className="max-w-4xl text-left text-white"
           initial={{ opacity: 0, y: 30 }}
@@ -60,7 +61,15 @@ export function Hero() {
               size="lg"
               className="bg-white text-black hover:bg-gray-100 font-semibold px-8 py-3"
             >
-              <Link href="/auth/signup">Join The Community →</Link>
+              <Link
+                className={cn(
+                  buttonVariants({ variant: "default", size: "default" }),
+                  "text-black hover:text-white"
+                )}
+                href="/auth/signup"
+              >
+                Join The Community →
+              </Link>
             </Button>
           </motion.div>
         </motion.div>
