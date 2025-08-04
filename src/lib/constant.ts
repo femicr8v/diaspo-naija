@@ -6,6 +6,7 @@ import {
   AudienceBlock,
   Testimonial,
   FAQ,
+  CommunitySection,
 } from "./type";
 
 export const navLinks: NavLinks[] = [
@@ -44,6 +45,31 @@ export const heroContent = {
   primaryCTAHref: "/auth/signup",
   secondaryCTAHref: "#how-it-works",
 };
+
+// Hero Section Content
+export const communitySection: CommunitySection[] = [
+  {
+    title: "Community",
+    description:
+      "We bring together people with diverse skills, backgrounds, and perspectives, fostering an environment of collaboration and shared learning.",
+    image: "/1.jpg",
+    alt: "Community collaboration",
+  },
+  {
+    title: "Technology",
+    description:
+      "Through events, projects, and mentorship, we empower our members to develop solutions that address real-world challenges.",
+    image: "/2.jpg",
+    alt: "Technology innovation",
+  },
+  {
+    title: "Faith",
+    description:
+      "Whether you're just starting in tech or are an experienced professional, Innovate to Impact offers resources and opportunities to help you grow and make a meaningful contribution.",
+    image: "/3.jpg",
+    alt: "Faith and growth",
+  },
+];
 
 // Features Section Content
 export const features: Feature[] = [

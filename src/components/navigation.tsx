@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
 import { navLinks } from "@/lib/constant";
 import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Button, buttonVariants } from "@/components/ui/button";
 
 export function Navigation() {
@@ -20,52 +21,6 @@ export function Navigation() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  // Effect to blur main content when drawer is open
-  useEffect(() => {
-    if (mobileOpen) {
-      // Prevent scrolling when drawer is open
-      document.body.style.overflow = "hidden";
-
-      // Find and blur main content elements
-      const mainContent = document.querySelector("main");
-      const nextRoot = document.querySelector("#__next");
-      const bodyChildren = Array.from(document.body.children);
-
-      bodyChildren.forEach((child) => {
-        // Skip nav, scripts, styles, and our drawer
-        if (
-          child.tagName.toLowerCase() !== "nav" &&
-          child.tagName.toLowerCase() !== "script" &&
-          child.tagName.toLowerCase() !== "style" &&
-          child.id !== "mobile-drawer" &&
-          !child.classList.contains("mobile-drawer")
-        ) {
-          child.style.filter = "blur(3px)";
-          child.style.transition = "filter 0.3s ease-in-out";
-        }
-      });
-    } else {
-      document.body.style.overflow = "";
-
-      // Remove blur from all elements
-      const bodyChildren = Array.from(document.body.children);
-      bodyChildren.forEach((child) => {
-        child.style.filter = "";
-        child.style.transition = "";
-      });
-    }
-
-    // Cleanup on unmount
-    return () => {
-      document.body.style.overflow = "";
-      const bodyChildren = Array.from(document.body.children);
-      bodyChildren.forEach((child) => {
-        child.style.filter = "";
-        child.style.transition = "";
-      });
-    };
-  }, [mobileOpen]);
 
   return (
     <>
@@ -142,69 +97,94 @@ export function Navigation() {
         </div>
       </nav>
 
-      {/* Mobile Side Drawer - Completely outside nav for proper fixed positioning */}
-      {mobileOpen && (
-        <>
-          {/* Backdrop */}
-          <div
-            className="lg:hidden fixed inset-0 bg-black/30 z-[60]"
-            onClick={() => setMobileOpen(false)}
-          />
+      {/* Mobile Side Drawer */}
+      <AnimatePresence>
+        {mobileOpen && (
+          <>
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="lg:hidden fixed inset-0 bg-black/50 z-[60]"
+              onClick={() => setMobileOpen(false)}
+            />
 
-          {/* Side Drawer */}
-          <div
-            id="mobile-drawer"
-            className={cn(
-              "mobile-drawer lg:hidden fixed inset-y-0 right-0 w-80 max-w-[85vw] bg-background border-l border-primary/20 shadow-xl z-[70]",
-              "transform transition-transform duration-300 ease-in-out",
-              mobileOpen ? "translate-x-0" : "translate-x-full"
-            )}
-            style={{ filter: "none !important" }}
-          >
-            <div className="flex flex-col h-full">
-              {/* Header - Just close button */}
-              <div className="flex items-center justify-end p-6 border-b border-primary/20">
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  onClick={() => setMobileOpen(false)}
-                  aria-label="Close menu"
-                >
-                  <X size={24} />
-                </Button>
-              </div>
-
-              {/* Navigation Links */}
-              <div className="flex-1 px-6 py-8 space-y-6">
-                {navLinks.map((navlink) => (
-                  <Link
-                    key={navlink.href}
-                    href={navlink.href}
-                    className="block text-lg font-medium font-roboto text-muted-foreground hover:text-primary transition-colors py-2 text-right"
+            {/* Side Drawer */}
+            <motion.div
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{
+                type: "spring",
+                stiffness: 300,
+                damping: 30,
+                duration: 0.3,
+              }}
+              className="lg:hidden fixed top-0 right-0 bottom-0 w-80 bg-background border-l border-primary/20 shadow-xl z-[70]"
+            >
+              <div className="flex flex-col h-full">
+                {/* Header - Just close button */}
+                <div className="flex items-center justify-end p-6 border-b border-primary/20">
+                  <Button
+                    variant="ghost"
+                    size="icon"
                     onClick={() => setMobileOpen(false)}
+                    aria-label="Close menu"
                   >
-                    {navlink.label}
-                  </Link>
-                ))}
+                    <X size={24} />
+                  </Button>
+                </div>
 
-                {/* Join Button - moved closer to links */}
-                <div className="pt-4">
-                  <Link
-                    href="/auth/signup"
-                    className={cn(
-                      buttonVariants({ variant: "default", size: "lg" }),
-                      "bg-primary hover:bg-primary/90 text-primary-foreground w-full"
-                    )}
-                    onClick={() => setMobileOpen(false)}
+                {/* Navigation Links */}
+                <div className="flex-1 px-6 py-8 space-y-6">
+                  {navLinks.map((navlink, index) => (
+                    <motion.div
+                      key={navlink.href}
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{
+                        delay: 0.1 + index * 0.1,
+                        duration: 0.3,
+                      }}
+                    >
+                      <Link
+                        href={navlink.href}
+                        className="block text-xl font-medium font-roboto text-muted-foreground hover:text-primary transition-colors py-2 text-center"
+                        onClick={() => setMobileOpen(false)}
+                      >
+                        {navlink.label}
+                      </Link>
+                    </motion.div>
+                  ))}
+
+                  {/* Join Button - moved closer to links */}
+                  <motion.div
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{
+                      delay: 0.1 + navLinks.length * 0.1,
+                      duration: 0.3,
+                    }}
                   >
-                    Join Now
-                  </Link>
+                    <Link
+                      href="/auth/signup"
+                      className={cn(
+                        buttonVariants({ variant: "default", size: "lg" }),
+                        "bg-primary hover:bg-primary/90 text-primary-foreground w-full text-lg py-6"
+                      )}
+                      onClick={() => setMobileOpen(false)}
+                    >
+                      Join Now
+                    </Link>
+                  </motion.div>
                 </div>
               </div>
-            </div>
-          </div>
-        </>
-      )}
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </>
   );
 }

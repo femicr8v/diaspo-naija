@@ -35,3 +35,10 @@ export interface FAQ {
   question: string;
   answer: string;
 }
+
+export interface CommunitySection {
+  title: string;
+  description: string;
+  image: string;
+  alt: string;
+}

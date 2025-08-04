@@ -1,19 +1,21 @@
-import { Navigation } from "@/components/navigation";
-import { Hero } from "@/components/hero";
-import { Features } from "@/components/features";
-import { HowItWorks } from "@/components/how-it-works";
-import { Audience } from "@/components/audience";
-import { MentorshipCTA } from "@/components/mentorship-cta";
-import { Testimonials } from "@/components/testimonials";
 import { FAQ } from "@/components/faq";
-import { Newsletter } from "@/components/newsletter";
+import { Hero } from "@/components/hero";
 import { Footer } from "@/components/footer";
+import { Audience } from "@/components/audience";
+import { Features } from "@/components/features";
+import { Newsletter } from "@/components/newsletter";
+import { Navigation } from "@/components/navigation";
+import { HowItWorks } from "@/components/how-it-works";
+import { Testimonials } from "@/components/testimonials";
+import { MentorshipCTA } from "@/components/mentorship-cta";
+import { EmpoweringInnovators } from "@/components/empowering-innovators";
 
 export default function Home() {
   return (
     <main className="min-h-screen">
       <Navigation />
       <Hero />
+      <EmpoweringInnovators />
       <Features />
       <HowItWorks />
       <Audience />

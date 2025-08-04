@@ -1,9 +1,9 @@
 "use client";
 
 import Link from "next/link";
+import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { Button, buttonVariants } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
 
 export function Hero() {
   return (
@@ -15,7 +15,7 @@ export function Hero() {
           backgroundImage: "url('/hero.jpg')",
         }}
       >
-        <div className="absolute inset-0 bg-black/60"></div>
+        <div className="absolute inset-0 bg-black/60" />
       </div>
 
       {/* Content */}
@@ -32,9 +32,9 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            A Community for <span className="text-green-400">Movers</span>,{" "}
-            <span className="text-green-400">Shakers</span>, and{" "}
-            <span className="text-green-400">Creators</span>
+            A Community for <span className="text-primary">Movers</span>,{" "}
+            <span className="text-primary">Shakers</span>, and{" "}
+            <span className="text-primary">Creators</span>
           </motion.h1>
 
           <motion.p
